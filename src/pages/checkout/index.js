@@ -1,7 +1,8 @@
 import Header from "../../components/Header"
+import Head from "next/head";
 import Image from "next/dist/client/image"
-import {useSelector} from 'react-redux'
-import { selectItems , selectTotal} from '../../slices/basketSlice'
+import { useSelector } from 'react-redux'
+import { selectItems, selectTotal } from '../../slices/basketSlice'
 import CheckoutProduct from "../../components/CheckoutProduct"
 import Currency from 'react-currency-formatter'
 import { useSession } from "next-auth/client"
@@ -13,6 +14,9 @@ function checkout() {
     console.log(items);
     return (
         <div className="bg-gray-100">
+            <Head>
+                <title>Amazonn</title>
+            </Head>
             <Header />
             <main className=" lg:flex max-w-screen-2xl mx-auto">
                 {/* Left Hand */}
@@ -29,17 +33,17 @@ function checkout() {
                         </h1>
 
                         {
-                            items.map((item, i)=>(
-                                <CheckoutProduct 
-                                  key={i} 
-                                  id={item.id}
-                                  title={item.title}
-                                  rating={item.rating}
-                                  price={item.price}
-                                  description={item.description}
-                                  category={item.category}
-                                  image={item.image}
-                                  hasPrime={item.hasPrime}
+                            items.map((item, i) => (
+                                <CheckoutProduct
+                                    key={i}
+                                    id={item.id}
+                                    title={item.title}
+                                    rating={item.rating}
+                                    price={item.price}
+                                    description={item.description}
+                                    category={item.category}
+                                    image={item.image}
+                                    hasPrime={item.hasPrime}
                                 />
                             ))
                         }
@@ -51,16 +55,16 @@ function checkout() {
                     {
                         items.length > 0 && (
                             <>
-                              <h2 className='whitespace-nowrap'>Subtotal ({items.length} items) : {" "}
-                                <span className="font-bold">
-                                    <Currency quantity={total}/>
-                                </span>
-                              </h2>
-                              <button 
-                                disabled={!session}
-                                className={`button mt-2 ${!session && 'from-gray-300 to-gray-500     border-gray-200 text-gray-300 cursor-not-allowed'}`}>
-                                  {!session ? 'Sign in to checkout' : 'Proceed to checkout'}
-                              </button>
+                                <h2 className='whitespace-nowrap'>Subtotal ({items.length} items) : {" "}
+                                    <span className="font-bold">
+                                        <Currency quantity={total} />
+                                    </span>
+                                </h2>
+                                <button
+                                    disabled={!session}
+                                    className={`button mt-2 ${!session && 'from-gray-300 to-gray-500     border-gray-200 text-gray-300 cursor-not-allowed'}`}>
+                                    {!session ? 'Sign in to checkout' : 'Proceed to checkout'}
+                                </button>
                             </>
                         )
                     }
