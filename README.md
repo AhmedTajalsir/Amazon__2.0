@@ -1,5 +1,7 @@
 # Installation Steps
+# [Live Demo](https://amazon-2-0-et6o4e1ju-ahtajalsir2-gmailcom.vercel.app/)
 
+![Screenshot (351)](https://user-images.githubusercontent.com/73963149/134820709-365fe468-9de0-4887-b1b3-e57d2fb19e00.png)
 
 
 ## Using npm
